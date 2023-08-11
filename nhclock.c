@@ -206,7 +206,7 @@ void add_number(struct CHARS *chars, int num) {
   }
 }
 void print_chars(struct CHARS *chars) {
-  printf("\ec");
+  printf("\ec\033[?25l");
   printf("%s", chars->space);
   printf("%s", chars->init);
   printf("%s\n", chars->line0);
@@ -269,24 +269,19 @@ int main(int argc, char **argv) {
   struct CHARS chars;
   time_t timer;
   struct tm *now;
-  int sec = 0;
-  int secbk = 0;
   while (true) {
     time(&timer);
     now = localtime(&timer);
-    sec = now->tm_sec;
-    if (sec != secbk) {
-      secbk = sec;
-      clear(&chars);
-      init_chars(&chars, now);
-      add_hash(&chars);
-      add_number(&chars, now->tm_hour / 10);
-      add_number(&chars, now->tm_hour % 10);
-      add_number(&chars, now->tm_min / 10);
-      add_number(&chars, now->tm_min % 10);
-      add_number(&chars, sec / 10);
-      add_number(&chars, sec % 10);
-      print_chars(&chars);
-    }
+    sleep(1);
+    clear(&chars);
+    init_chars(&chars, now);
+    add_hash(&chars);
+    add_number(&chars, now->tm_hour / 10);
+    add_number(&chars, now->tm_hour % 10);
+    add_number(&chars, now->tm_min / 10);
+    add_number(&chars, now->tm_min % 10);
+    add_number(&chars, now->tm_sec / 10);
+    add_number(&chars, now->tm_sec % 10);
+    print_chars(&chars);
   }
 }
