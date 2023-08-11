@@ -272,7 +272,6 @@ int main(int argc, char **argv) {
   while (true) {
     time(&timer);
     now = localtime(&timer);
-    sleep(1);
     clear(&chars);
     init_chars(&chars, now);
     add_hash(&chars);
@@ -283,5 +282,6 @@ int main(int argc, char **argv) {
     add_number(&chars, now->tm_sec / 10);
     add_number(&chars, now->tm_sec % 10);
     print_chars(&chars);
+    sleep(1);
   }
 }
