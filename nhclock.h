@@ -27,6 +27,9 @@
  *
  *
  */
+#ifndef __linux__
+#warning "This program is only for Linux"
+#endif
 // clang-format off
 #define hash0  "  ● ●"
 #define hash1  "●●●●●"

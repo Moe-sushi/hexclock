@@ -1,5 +1,5 @@
 all :
-	cc -static nhclock.c -o nhclock
+	cc -static -ffunction-sections -fdata-sections -Wl,--gc-sections nhclock.c -o nhclock
 install :all
 	cp nhclock ${PREFIX}/bin/nhclock
 	chmod 777 ${PREFIX}/bin/nhclock
