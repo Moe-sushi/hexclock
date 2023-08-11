@@ -27,9 +27,9 @@
  *
  *
  */
-// I think you can understand these easy code.
+// I think you can understand these simple code.
 // So I needn't write comments.
-// if you can't, you can rewrite a better one.
+// If you can't, you can just rewrite a better one.
 // Trust me, it's very very easy.
 #include "nhclock.h"
 void clear(struct CHARS *chars) {
