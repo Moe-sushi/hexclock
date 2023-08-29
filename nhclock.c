@@ -32,180 +32,66 @@
 // If you can't, you can just rewrite a better one.
 // Trust me, it's very very easy.
 #include "nhclock.h"
-void clear(struct CHARS *chars) {
+void clear(struct CHARS *chars)
+{
   chars->line0[0] = '\000';
   chars->line1[0] = '\000';
   chars->line2[0] = '\000';
   chars->line3[0] = '\000';
   chars->line4[0] = '\000';
 }
-void add_hash(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, hash0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, hash1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, hash2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, hash3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, hash4);
-}
-void add_zero(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, zero0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, zero1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, zero2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, zero3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, zero4);
-}
-void add_one(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, one0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, one1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, one2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, one3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, one4);
-}
-void add_two(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, two0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, two1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, two2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, two3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, two4);
-}
-void add_three(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, three0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, three1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, three2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, three3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, three4);
-}
-void add_four(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, four0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, four1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, four2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, four3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, four4);
-}
-void add_five(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, five0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, five1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, five2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, five3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, five4);
-}
-void add_six(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, six0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, six1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, six2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, six3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, six4);
-}
-void add_seven(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, seven0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, seven1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, seven2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, seven3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, seven4);
-}
-void add_eight(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, eight0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, eight1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, eight2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, eight3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, eight4);
-}
-void add_nine(struct CHARS *chars) {
-  strcat(chars->line0, " ");
-  strcat(chars->line0, nine0);
-  strcat(chars->line1, " ");
-  strcat(chars->line1, nine1);
-  strcat(chars->line2, " ");
-  strcat(chars->line2, nine2);
-  strcat(chars->line3, " ");
-  strcat(chars->line3, nine3);
-  strcat(chars->line4, " ");
-  strcat(chars->line4, nine4);
-}
-void add_number(struct CHARS *chars, int num) {
-  switch (num) {
+void add_number(struct CHARS *chars, int num)
+{
+  struct character character;
+  switch (num)
+  {
   case 0:
-    add_zero(chars);
+    character = zero;
     break;
   case 1:
-    add_one(chars);
+    character = one;
     break;
   case 2:
-    add_two(chars);
+    character = two;
     break;
   case 3:
-    add_three(chars);
+    character = three;
     break;
   case 4:
-    add_four(chars);
+    character = four;
     break;
   case 5:
-    add_five(chars);
+    character = five;
     break;
   case 6:
-    add_six(chars);
+    character = six;
     break;
   case 7:
-    add_seven(chars);
+    character = seven;
     break;
   case 8:
-    add_eight(chars);
+    character = eight;
     break;
   case 9:
-    add_nine(chars);
+    character = nine;
+    break;
+  case 10:
+    character = hash;
     break;
   }
+  strcat(chars->line0, " ");
+  strcat(chars->line0, character.line0);
+  strcat(chars->line1, " ");
+  strcat(chars->line1, character.line1);
+  strcat(chars->line2, " ");
+  strcat(chars->line2, character.line2);
+  strcat(chars->line3, " ");
+  strcat(chars->line3, character.line3);
+  strcat(chars->line4, " ");
+  strcat(chars->line4, character.line4);
 }
-void print_chars(struct CHARS *chars) {
+void print_chars(struct CHARS *chars)
+{
   printf("\ec\033[?25l");
   printf("%s", chars->space);
   printf("%s", chars->init);
@@ -219,7 +105,8 @@ void print_chars(struct CHARS *chars) {
   printf("%s", chars->init);
   printf("%s\n", chars->line4);
 }
-void init_chars(struct CHARS *chars, struct tm *now) {
+void init_chars(struct CHARS *chars, struct tm *now)
+{
   char buf[128] = {0};
   int tmp = 0;
   strcpy(chars->init, "\033[1;38;2;");
@@ -255,26 +142,30 @@ void init_chars(struct CHARS *chars, struct tm *now) {
   row /= 2;
   row -= 3;
   chars->space[0] = 0;
-  for (unsigned short i = 0; i < row; i++) {
+  for (unsigned short i = 0; i < row; i++)
+  {
     strcat(chars->space, "\n");
   }
 }
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
   struct winsize size;
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
-  if (size.ws_col < 42 || size.ws_row < 6) {
+  if (size.ws_col < 42 || size.ws_row < 6)
+  {
     fprintf(stderr, "\033[31mWindow size too small!\033[0m\n");
     exit(1);
   }
   struct CHARS chars;
   time_t timer;
   struct tm *now;
-  while (true) {
+  while (true)
+  {
     time(&timer);
     now = localtime(&timer);
     clear(&chars);
     init_chars(&chars, now);
-    add_hash(&chars);
+    add_number(&chars, 10);
     add_number(&chars, now->tm_hour / 10);
     add_number(&chars, now->tm_hour % 10);
     add_number(&chars, now->tm_min / 10);
