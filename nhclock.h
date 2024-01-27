@@ -30,101 +30,89 @@
 #ifndef __linux__
 #warning "This program is only for Linux"
 #endif
-struct character
-{
-  char line0[16];
-  char line1[16];
-  char line2[16];
-  char line3[16];
-  char line4[16];
+struct character {
+	char line0[16];
+	char line1[16];
+	char line2[16];
+	char line3[16];
+	char line4[16];
 };
-struct character hash =
-    {
-        .line0 = "  ● ●",
-        .line1 = "●●●●●",
-        .line2 = " ● ● ",
-        .line3 = "●●●●●",
-        .line4 = "● ●  ",
+struct character hash = {
+	.line0 = "  ● ●",
+	.line1 = "●●●●●",
+	.line2 = " ● ● ",
+	.line3 = "●●●●●",
+	.line4 = "● ●  ",
 };
-struct character zero =
-    {
-        .line0 = " ●●● ",
-        .line1 = "●   ●",
-        .line2 = "●   ●",
-        .line3 = "●   ●",
-        .line4 = " ●●● ",
+struct character zero = {
+	.line0 = " ●●● ",
+	.line1 = "●   ●",
+	.line2 = "●   ●",
+	.line3 = "●   ●",
+	.line4 = " ●●● ",
 };
-struct character one =
-    {
-        .line0 = "  ●  ",
-        .line1 = " ●●  ",
-        .line2 = "  ●  ",
-        .line3 = "  ●  ",
-        .line4 = "  ●  ",
+struct character one = {
+	.line0 = "  ●  ",
+	.line1 = " ●●  ",
+	.line2 = "  ●  ",
+	.line3 = "  ●  ",
+	.line4 = "  ●  ",
 };
-struct character two =
-    {
-        .line0 = " ●●● ",
-        .line1 = "●   ●",
-        .line2 = "  ●● ",
-        .line3 = " ●   ",
-        .line4 = "●●●●●",
+struct character two = {
+	.line0 = " ●●● ",
+	.line1 = "●   ●",
+	.line2 = "  ●● ",
+	.line3 = " ●   ",
+	.line4 = "●●●●●",
 };
-struct character three =
-    {
-        .line0 = "●●●●●",
-        .line1 = "   ● ",
-        .line2 = "  ●● ",
-        .line3 = "●   ●",
-        .line4 = " ●●● ",
+struct character three = {
+	.line0 = "●●●●●",
+	.line1 = "   ● ",
+	.line2 = "  ●● ",
+	.line3 = "●   ●",
+	.line4 = " ●●● ",
 };
-struct character four =
-    {
-        .line0 = "  ●● ",
-        .line1 = " ● ● ",
-        .line2 = "●  ● ",
-        .line3 = "●●●●●",
-        .line4 = "   ● ",
+struct character four = {
+	.line0 = "  ●● ",
+	.line1 = " ● ● ",
+	.line2 = "●  ● ",
+	.line3 = "●●●●●",
+	.line4 = "   ● ",
 };
-struct character five =
-    {
-        .line0 = "●●●●●",
-        .line1 = "●    ",
-        .line2 = "●●●● ",
-        .line3 = "    ●",
-        .line4 = "●●●● ",
+struct character five = {
+	.line0 = "●●●●●",
+	.line1 = "●    ",
+	.line2 = "●●●● ",
+	.line3 = "    ●",
+	.line4 = "●●●● ",
 };
-struct character six =
-    {
-        .line0 = "  ●● ",
-        .line1 = " ●   ",
-        .line2 = "●●●● ",
-        .line3 = "●   ●",
-        .line4 = " ●●● ",
+struct character six = {
+	.line0 = "  ●● ",
+	.line1 = " ●   ",
+	.line2 = "●●●● ",
+	.line3 = "●   ●",
+	.line4 = " ●●● ",
 };
-struct character seven =
-    {
-        .line0 = "●●●●●",
-        .line1 = "   ● ",
-        .line2 = "  ●  ",
-        .line3 = " ●   ",
-        .line4 = " ●   ",
+struct character seven = {
+	.line0 = "●●●●●",
+	.line1 = "   ● ",
+	.line2 = "  ●  ",
+	.line3 = " ●   ",
+	.line4 = " ●   ",
 };
-struct character eight =
-    {
-        .line0 = " ●●● ",
-        .line1 = "●   ●",
-        .line2 = " ●●● ",
-        .line3 = "●   ●",
-        .line4 = " ●●● ",
+struct character eight = {
+	.line0 = " ●●● ",
+	.line1 = "●   ●",
+	.line2 = " ●●● ",
+	.line3 = "●   ●",
+	.line4 = " ●●● ",
 };
-struct character nine =
-    {
-        .line0 = " ●●● ",
-        .line1 = "●   ●",
-        .line2 = " ●●●●",
-        .line3 = "   ● ",
-        .line4 = " ●●  ",
+struct character nine = {
+	.line0 = " ●●● ",
+	.line1 = "●   ●",
+	.line2 = " ●●●●",
+	.line3 = "   ● ",
+	.line4 = " ●●  ",
 };
 #include <stdbool.h>
 #include <stdio.h>
@@ -134,13 +122,11 @@ struct character nine =
 #include <termios.h>
 #include <time.h>
 #include <unistd.h>
-struct CHARS
-{
-  char space[256];
-  char init[256];
-  char line0[1024];
-  char line1[1024];
-  char line2[1024];
-  char line3[1024];
-  char line4[1024];
+struct CHARS {
+	char init[256];
+	char line0[1024];
+	char line1[1024];
+	char line2[1024];
+	char line3[1024];
+	char line4[1024];
 };
