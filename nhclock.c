@@ -105,36 +105,6 @@ void show_logo(void) {
       if (hexclock[i] == '\n') {
         printf("\n\033[%dG", col);
       } else {
-        printf("%s", "×");
-        i++;
-        i++;
-      }
-      usleep(7000);
-    } else {
-      printf("%c", ' ');
-    }
-    fflush(stdout);
-  }
-  sleep(1);
-  printf("\033[%dH\033[%dG", rol, col);
-  for (size_t i = 0; i < strlen(hexclock); i++) {
-    if (hexclock[i] != ' ') {
-      usleep(3000);
-    }
-    if (hexclock[i] == '\n') {
-      printf("\n\033[%dG", col);
-    } else {
-      printf("%c", hexclock[i]);
-    }
-    fflush(stdout);
-  }
-  sleep(1);
-  printf("\033[%dH\033[%dG", rol, col);
-  for (size_t i = 0; i < strlen(hexclock); i++) {
-    if (hexclock[i] != ' ') {
-      if (hexclock[i] == '\n') {
-        printf("\n\033[%dG", col);
-      } else {
         printf("%c", ' ');
         i++;
         i++;
