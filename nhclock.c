@@ -46,6 +46,10 @@ char *hexclock = "      ●   ● ●●●●● ●   ●\n"
                  "●     ●     ●   ● ●     ●●●\n"
                  "●   ● ●     ●   ● ●   ● ●  ●\n"
                  " ●●●  ●●●●●  ●●●   ●●●  ●   ●";
+void on_exit(int _unused) {
+  printf("\033[0m\033[?25h\ec");
+  exit(0);
+}
 void show_logo(void) {
   struct winsize size;
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
@@ -256,6 +260,7 @@ void init(void) {
     fprintf(stderr, "\033[31mWindow size too small!\033[0m\n");
     exit(1);
   }
+  signal(SIGINT, on_exit);
   x = size.ws_col;
   x /= 2;
   x -= 23;
