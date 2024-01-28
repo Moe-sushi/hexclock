@@ -30,6 +30,14 @@
 #ifndef __linux__
 #warning "This program is only for Linux"
 #endif
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/ioctl.h>
+#include <termios.h>
+#include <time.h>
+#include <unistd.h>
 struct character {
   char line0[16];
   char line1[16];
@@ -114,14 +122,6 @@ struct character nine = {
     .line3 = "   ● ",
     .line4 = " ●●  ",
 };
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/ioctl.h>
-#include <termios.h>
-#include <time.h>
-#include <unistd.h>
 struct CHARS {
   char init[256];
   char line0[1024];
