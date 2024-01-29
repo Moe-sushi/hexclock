@@ -55,7 +55,7 @@ void show_logo(void) {
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
   short col = size.ws_col;
   col /= 2;
-  col -= 15;
+  col -= 13;
   short rol = size.ws_row;
   rol /= 2;
   rol -= 4;
