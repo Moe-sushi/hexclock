@@ -46,7 +46,7 @@ char *hexclock = "      ●   ● ●●●●● ●   ●\n"
                  "●     ●     ●   ● ●     ●●●\n"
                  "●   ● ●     ●   ● ●   ● ●  ●\n"
                  " ●●●  ●●●●●  ●●●   ●●●  ●   ●";
-void on_exit(int _unused) {
+void __on_exit(int _unused) {
   printf("\033[0m\033[?25h\ec");
   exit(0);
 }
@@ -224,20 +224,20 @@ void init_chars(struct CHARS *chars, struct tm *now) {
   char buf[128] = {0};
   int tmp = 0;
   strcpy(chars->init, "\033[1;38;2;");
-  tmp = now->tm_hour % 10 * 2.6;
-  tmp += (now->tm_hour / 10) * 16 * 2.6;
+  tmp = now->tm_hour % 10 * 1.6 + 100;
+  tmp += (now->tm_hour / 10) * 16 * 1.6 + 100;
   buf[0] = 0;
   sprintf(buf, "%d", tmp);
   strcat(chars->init, buf);
   strcat(chars->init, ";");
-  tmp = now->tm_min % 10 * 2.6;
-  tmp += (now->tm_min / 10) * 16 * 2.6;
+  tmp = now->tm_min % 10 * 1.6 + 100;
+  tmp += (now->tm_min / 10) * 16 * 1.6 + 100;
   buf[0] = 0;
   sprintf(buf, "%d", tmp);
   strcat(chars->init, buf);
   strcat(chars->init, ";");
-  tmp = now->tm_sec % 10 * 2.6;
-  tmp += (now->tm_sec / 10) * 16 * 2.6;
+  tmp = now->tm_sec % 10 * 1.6 + 100;
+  tmp += (now->tm_sec / 10) * 16 * 1.6 + 100;
   buf[0] = 0;
   sprintf(buf, "%d", tmp);
   strcat(chars->init, buf);
@@ -260,7 +260,7 @@ void init(void) {
     fprintf(stderr, "\033[31mWindow size too small!\033[0m\n");
     exit(1);
   }
-  signal(SIGINT, on_exit);
+  signal(SIGINT, __on_exit);
   x = size.ws_col;
   x /= 2;
   x -= 23;

@@ -30,6 +30,7 @@
 #ifndef __linux__
 #warning "This program is only for Linux"
 #endif
+#include <signal.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,7 +39,6 @@
 #include <termios.h>
 #include <time.h>
 #include <unistd.h>
-#include <signal.h>
 struct character {
   char line0[16];
   char line1[16];
