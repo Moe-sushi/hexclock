@@ -119,6 +119,8 @@ void show_logo(void) {
     }
     fflush(stdout);
   }
+  printf("\033c\033[0m");
+  fflush(stdout);
 }
 void move(void) {
   switch (offset) {
