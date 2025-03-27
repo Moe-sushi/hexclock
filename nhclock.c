@@ -221,24 +221,24 @@ void print_chars(struct CHARS *chars) {
 }
 void init_chars(struct CHARS *chars, struct tm *now) {
   char buf[128] = {0};
-  int tmp = 0;
+  float tmp = 0;
   strcpy(chars->color, "\033[1;38;2;");
-  tmp = now->tm_hour % 10 * 8 / 5 + 100;
+  tmp = now->tm_hour % 10 * 8 / 5;
   tmp += (now->tm_hour / 10) * 16 * 8 / 5 + 100;
   buf[0] = 0;
-  sprintf(buf, "%d", tmp);
+  sprintf(buf, "%.0f", tmp);
   strcat(chars->color, buf);
   strcat(chars->color, ";");
-  tmp = now->tm_min % 10 * 8 / 5 + 100;
+  tmp = now->tm_min % 10 * 8 / 5;
   tmp += (now->tm_min / 10) * 16 * 8 / 5 + 100;
   buf[0] = 0;
-  sprintf(buf, "%d", tmp);
+  sprintf(buf, "%.0f", tmp);
   strcat(chars->color, buf);
   strcat(chars->color, ";");
-  tmp = now->tm_sec % 10 * 8 / 5 + 100;
+  tmp = now->tm_sec % 10 * 8 / 5;
   tmp += (now->tm_sec / 10) * 16 * 8 / 5 + 100;
   buf[0] = 0;
-  sprintf(buf, "%d", tmp);
+  sprintf(buf, "%.0f", tmp);
   strcat(chars->color, buf);
   strcat(chars->color, "m");
   buf[0] = 0;
@@ -258,7 +258,7 @@ void init(void) {
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
   if (size.ws_col < 42 || size.ws_row < 6) {
     fprintf(stderr, "\033[31mWindow size too small!\033[0m\n");
-    exit(1);
+    // exit(1);
   }
   signal(SIGINT, __on_exit);
   x = size.ws_col;
