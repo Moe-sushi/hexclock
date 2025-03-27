@@ -35,17 +35,17 @@
 static short x = 0;
 static short y = 0;
 static int offset = 0;
-char *hexclock = "      ●   ● ●●●●● ●   ●\n"
-                 "      ●   ● ●      ● ●\n"
-                 "      ●●●●● ●●●●    ●\n"
-                 "      ●   ● ●      ● ●\n"
-                 "      ●   ● ●●●●● ●   ●\n"
+char *hexclock = "      o   o ooooo o   o\n"
+                 "      o   o o      o o\n"
+                 "      ooooo oooo    o\n"
+                 "      o   o o      o o\n"
+                 "      o   o ooooo o   o\n"
                  "\n"
-                 " ●●●  ●      ●●●   ●●●  ●   ●\n"
-                 "●   ● ●     ●   ● ●   ● ●  ●\n"
-                 "●     ●     ●   ● ●     ●●●\n"
-                 "●   ● ●     ●   ● ●   ● ●  ●\n"
-                 " ●●●  ●●●●●  ●●●   ●●●  ●   ●";
+                 " ooo  o      ooo   ooo  o   o\n"
+                 "o   o o     o   o o   o o  o\n"
+                 "o     o     o   o o     ooo\n"
+                 "o   o o     o   o o   o o  o\n"
+                 " ooo  ooooo  ooo   ooo  o   o";
 void __on_exit(int _unused) {
   printf("\033[0m\033[?25h\ec");
   exit(0);
@@ -79,9 +79,7 @@ void show_logo(void) {
       if (hexclock[i] == '\n') {
         printf("\n\033[%dG", col);
       } else {
-        printf("%s", "×");
-        i++;
-        i++;
+        printf("%s", "x");
       }
       usleep(7000);
     } else {
@@ -214,46 +212,46 @@ void add_number(struct CHARS *chars, int num) {
   strcat(chars->line4, character.line4);
 }
 void print_chars(struct CHARS *chars) {
-  printf("%s", chars->init);
-  printf("%s\n", chars->line0);
-  printf("%s\n", chars->line1);
-  printf("%s\n", chars->line2);
-  printf("%s\n", chars->line3);
-  printf("%s\n", chars->line4);
+  printf("%s%s\n", chars->color, chars->line0);
+  printf("%s%s\n", chars->color, chars->line1);
+  printf("%s%s\n", chars->color, chars->line2);
+  printf("%s%s\n", chars->color, chars->line3);
+  printf("%s%s\n", chars->color, chars->line4);
   fflush(stdout);
 }
 void init_chars(struct CHARS *chars, struct tm *now) {
   char buf[128] = {0};
   int tmp = 0;
-  strcpy(chars->init, "\033[1;38;2;");
+  strcpy(chars->color, "\033[1;38;2;");
   tmp = now->tm_hour % 10 * 1.6 + 100;
   tmp += (now->tm_hour / 10) * 16 * 1.6 + 100;
   buf[0] = 0;
   sprintf(buf, "%d", tmp);
-  strcat(chars->init, buf);
-  strcat(chars->init, ";");
+  strcat(chars->color, buf);
+  strcat(chars->color, ";");
   tmp = now->tm_min % 10 * 1.6 + 100;
   tmp += (now->tm_min / 10) * 16 * 1.6 + 100;
   buf[0] = 0;
   sprintf(buf, "%d", tmp);
-  strcat(chars->init, buf);
-  strcat(chars->init, ";");
+  strcat(chars->color, buf);
+  strcat(chars->color, ";");
   tmp = now->tm_sec % 10 * 1.6 + 100;
   tmp += (now->tm_sec / 10) * 16 * 1.6 + 100;
   buf[0] = 0;
   sprintf(buf, "%d", tmp);
-  strcat(chars->init, buf);
-  strcat(chars->init, "m");
+  strcat(chars->color, buf);
+  strcat(chars->color, "m");
   buf[0] = 0;
-  sprintf(buf, "\033[%dH", y);
-  strcat(chars->init, buf);
-  buf[0] = 0;
-  sprintf(buf, "\033[%dG", x);
+  sprintf(buf, "\033[%dH\033[%dG", y, x);
   strcat(chars->line0, buf);
-  strcpy(chars->line1, chars->line0);
-  strcpy(chars->line2, chars->line0);
-  strcpy(chars->line3, chars->line0);
-  strcpy(chars->line4, chars->line0);
+  sprintf(buf, "\033[%dH\033[%dG", y + 1, x);
+  strcpy(chars->line1, buf);
+  sprintf(buf, "\033[%dH\033[%dG", y + 2, x);
+  strcpy(chars->line2, buf);
+  sprintf(buf, "\033[%dH\033[%dG", y + 3, x);
+  strcpy(chars->line3, buf);
+  sprintf(buf, "\033[%dH\033[%dG", y + 4, x);
+  strcpy(chars->line4, buf);
 }
 void init(void) {
   struct winsize size;

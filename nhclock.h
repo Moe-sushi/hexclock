@@ -47,84 +47,84 @@ struct character {
   char line4[16];
 };
 struct character hash = {
-    .line0 = "  ● ●",
-    .line1 = "●●●●●",
-    .line2 = " ● ● ",
-    .line3 = "●●●●●",
-    .line4 = "● ●  ",
+    .line0 = "  o o",
+    .line1 = "ooooo",
+    .line2 = " o o ",
+    .line3 = "ooooo",
+    .line4 = "o o  ",
 };
 struct character zero = {
-    .line0 = " ●●● ",
-    .line1 = "●   ●",
-    .line2 = "●   ●",
-    .line3 = "●   ●",
-    .line4 = " ●●● ",
+    .line0 = " ooo ",
+    .line1 = "o   o",
+    .line2 = "o   o",
+    .line3 = "o   o",
+    .line4 = " ooo ",
 };
 struct character one = {
-    .line0 = "  ●  ",
-    .line1 = " ●●  ",
-    .line2 = "  ●  ",
-    .line3 = "  ●  ",
-    .line4 = "  ●  ",
+    .line0 = "  o  ",
+    .line1 = " oo  ",
+    .line2 = "  o  ",
+    .line3 = "  o  ",
+    .line4 = "  o  ",
 };
 struct character two = {
-    .line0 = " ●●● ",
-    .line1 = "●   ●",
-    .line2 = "  ●● ",
-    .line3 = " ●   ",
-    .line4 = "●●●●●",
+    .line0 = " ooo ",
+    .line1 = "o   o",
+    .line2 = "  oo ",
+    .line3 = " o   ",
+    .line4 = "ooooo",
 };
 struct character three = {
-    .line0 = "●●●●●",
-    .line1 = "   ● ",
-    .line2 = "  ●● ",
-    .line3 = "●   ●",
-    .line4 = " ●●● ",
+    .line0 = "ooooo",
+    .line1 = "   o ",
+    .line2 = "  oo ",
+    .line3 = "o   o",
+    .line4 = " ooo ",
 };
 struct character four = {
-    .line0 = "  ●● ",
-    .line1 = " ● ● ",
-    .line2 = "●  ● ",
-    .line3 = "●●●●●",
-    .line4 = "   ● ",
+    .line0 = "  oo ",
+    .line1 = " o o ",
+    .line2 = "o  o ",
+    .line3 = "ooooo",
+    .line4 = "   o ",
 };
 struct character five = {
-    .line0 = "●●●●●",
-    .line1 = "●    ",
-    .line2 = "●●●● ",
-    .line3 = "    ●",
-    .line4 = "●●●● ",
+    .line0 = "ooooo",
+    .line1 = "o    ",
+    .line2 = "oooo ",
+    .line3 = "    o",
+    .line4 = "oooo ",
 };
 struct character six = {
-    .line0 = "  ●● ",
-    .line1 = " ●   ",
-    .line2 = "●●●● ",
-    .line3 = "●   ●",
-    .line4 = " ●●● ",
+    .line0 = "  oo ",
+    .line1 = " o   ",
+    .line2 = "oooo ",
+    .line3 = "o   o",
+    .line4 = " ooo ",
 };
 struct character seven = {
-    .line0 = "●●●●●",
-    .line1 = "   ● ",
-    .line2 = "  ●  ",
-    .line3 = " ●   ",
-    .line4 = " ●   ",
+    .line0 = "ooooo",
+    .line1 = "   o ",
+    .line2 = "  o  ",
+    .line3 = " o   ",
+    .line4 = " o   ",
 };
 struct character eight = {
-    .line0 = " ●●● ",
-    .line1 = "●   ●",
-    .line2 = " ●●● ",
-    .line3 = "●   ●",
-    .line4 = " ●●● ",
+    .line0 = " ooo ",
+    .line1 = "o   o",
+    .line2 = " ooo ",
+    .line3 = "o   o",
+    .line4 = " ooo ",
 };
 struct character nine = {
-    .line0 = " ●●● ",
-    .line1 = "●   ●",
-    .line2 = " ●●●●",
-    .line3 = "   ● ",
-    .line4 = " ●●  ",
+    .line0 = " ooo ",
+    .line1 = "o   o",
+    .line2 = " oooo",
+    .line3 = "   o ",
+    .line4 = " oo  ",
 };
 struct CHARS {
-  char init[256];
+  char color[256];
   char line0[1024];
   char line1[1024];
   char line2[1024];
