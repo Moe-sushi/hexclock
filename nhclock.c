@@ -258,7 +258,7 @@ void init(void) {
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
   if (size.ws_col < 42 || size.ws_row < 6) {
     fprintf(stderr, "\033[31mWindow size too small!\033[0m\n");
-    // exit(1);
+    exit(1);
   }
   signal(SIGINT, __on_exit);
   x = size.ws_col;
